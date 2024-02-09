@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Flight Search API</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
-<div align="center">
-Welcome to Flight Search API
-You can list the flights with filtering by date, airport.
+<div class="container fluid text-center">
 
-<a href="/flights" >See all flights.</a>
+    <h1>Flight Search API</h1>
+
+        <a class="h2" th:href="@{/flights}" >See all flights.</a>
 </div>
 </body>
 </html>
