@@ -52,7 +52,7 @@ public class FlightRepositoryTest {
     }
 
     @Test
-    public void listAll()
+    public void testListAll()
     {
         Iterable<Flight> flights = repo.findAll();
         long size = StreamSupport.stream(flights.spliterator(), false).count();
@@ -116,4 +116,23 @@ public class FlightRepositoryTest {
             System.out.println(f.toString());
         }
     }
+
+    @Test
+    public void testGet()
+    {
+        Integer aId = 5;
+        Optional<Flight> flight = repo.findById(aId);
+        Assertions.assertTrue(flight.isPresent());
+        System.out.println(flight);
+    }
+
+    @Test
+    public void testDelete()
+    {
+        Integer aId = 5;
+        repo.deleteById(aId);
+        Optional<Flight> flight = repo.findById(aId);
+        Assertions.assertFalse(flight.isPresent());
+    }
+
 }

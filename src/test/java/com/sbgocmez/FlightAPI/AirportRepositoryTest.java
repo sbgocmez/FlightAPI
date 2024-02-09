@@ -3,7 +3,7 @@ package com.sbgocmez.FlightAPI;
 import com.sbgocmez.FlightAPI.airport.Airport;
 import com.sbgocmez.FlightAPI.airport.AirportRepository;
 import org.junit.jupiter.api.Assertions;
-
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -31,7 +31,7 @@ public class AirportRepositoryTest {
     }
 
     @Test
-    public void listAll()
+    public void testListAll()
     {
         Iterable<Airport> airports = repo.findAll();
         long size = StreamSupport.stream(airports.spliterator(), false).count();
@@ -60,4 +60,21 @@ public class AirportRepositoryTest {
         Assertions.assertEquals(updatedAirport2.getCity(), new_city);
     }
 
+    @Test
+    public void testGet()
+    {
+        Integer aId = 5;
+        Optional<Airport> airport = repo.findById(aId);
+        Assertions.assertTrue(airport.isPresent());
+        System.out.println(airport);
+    }
+
+    @Test
+    public void testDelete()
+    {
+        Integer aId = 5;
+        repo.deleteById(aId);
+        Optional<Airport> airport = repo.findById(aId);
+        Assertions.assertFalse(airport.isPresent());
+    }
 }
