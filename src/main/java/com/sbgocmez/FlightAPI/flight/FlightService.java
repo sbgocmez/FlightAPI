@@ -13,4 +13,8 @@ public class FlightService {
     {
         return (List<Flight>) repo.findAll();
     }
+
+    public void save(Flight flight) {
+        repo.save(flight);
+    }
 }

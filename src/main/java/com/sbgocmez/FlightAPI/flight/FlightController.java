@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -27,15 +28,15 @@ public class FlightController {
         model.addAttribute("listAirports", listAirports);
 
         model.addAttribute("flight", new Flight());
+        System.out.println("AAAAAAAAAAXXXXXXXX");
+        System.out.println("******************");
         return "flight_form";
     }
 
-    @GetMapping("/flights/save")
-    public String saveNewFlight(Model model) {
-        List<Airport> listAirports = helperService.listAll();
-        model.addAttribute("listAirports", listAirports);
-
-        model.addAttribute("flight", new Flight());
-        return "index";
+    @PostMapping("/flights/save")
+    public String saveFlight(Flight flight) {
+        service.save(flight);
+        return "redirect:/flights";
     }
+
 }
