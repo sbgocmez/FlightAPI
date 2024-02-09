@@ -39,4 +39,13 @@ public class Airport {
     public void setIataCode(String iataCode) {
         this.iataCode = iataCode;
     }
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", iataCode='" + iataCode + '\'' +
+                '}';
+    }
 }
