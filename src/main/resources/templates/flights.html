@@ -14,6 +14,40 @@
         <a class="h3" th:href="@{/flights/new}">Add New Flight</a>
     </div>
 
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <!--<form action="/flights/filterAirport" method="GET">
+        <div class="form-group">
+            <label for="departureAirport">Departure Airport:</label>
+            <select class="form-control" id="departureAirport" name="departureAirport" th:field="*{departureAirport}">
+                <option value="">Departure Airport</option>
+                <option th:each="airport : ${listAirports}"
+                        th:value="${airport.id}"
+                        th:selected="${airport.id == flight.departureAirport.id}"
+                        th:text="${airport.city + ' (' + airport.iataCode + ')'}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="returnAirport">Return Airport:</label>
+            <select class="form-control" id="returnAirport" name="returnAirport" th:field="*{returnAirport}">
+                <option value="">Return Airport</option>
+                <option th:each="airport : ${listAirports}"
+                        th:value="${airport.id}"
+                        th:selected="${airport.id == flight.returnAirport.id}"
+                        th:text="${airport.city + ' (' + airport.iataCode + ')'}">
+                </option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary"> Save </button>
+        </div>
+
+    </form>
+    </form>-->
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">
